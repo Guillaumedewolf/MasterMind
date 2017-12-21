@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>Mastermind</title>
+</head>
+<body>
+	<h1>Mastermind</h1>
+	<div><div class="cercleMB"></div>Bonne couleur et bonne place</div>
+	<div><div class="cercleMW"></div>Bonne couleur mais mauvaise place</div>
+	<p>si tu connais pas les règles clique <a href="https://fr.wikipedia.org/wiki/Mastermind">ici</a></p>
+	<div>nombre de coup: <span id="nombreCoup"></span> sur 10</div>
+	<div id="jeu">
+		<div id="reponse">
+			<div id="historique">
+				<div id="reponse1"></div>
+				<div id="reponse2"></div>
+				<div id="reponse3"></div>
+				<div id="reponse4"></div>
+				<div id="reponse5"></div>
+				<div id="reponse6"></div>
+				<div id="reponse7"></div>
+				<div id="reponse8"></div>
+				<div id="reponse9"></div>
+				<div id="reponse10"></div>
+			</div>
+			<div id="verificateur">
+				<div id="verification1"></div>
+				<div id="verification2"></div>
+				<div id="verification3"></div>
+				<div id="verification4"></div>
+				<div id="verification5"></div>
+				<div id="verification6"></div>
+				<div id="verification7"></div>
+				<div id="verification8"></div>
+				<div id="verification9"></div>
+				<div id="verification10"></div>
+			</div>
+		</div>
+		<div id="proposition">
+				
+		</div>
+		<div id="choix">
+			<div class="cercle red" id="red" onclick="choix('red')"></div>
+			<div class="cercle yellow" id="yellow" onclick="choix('yellow')"></div>
+			<div class="cercle blue" id="blue" onclick="choix('blue')"></div>
+			<div class="cercle green" id="green" onclick="choix('green')"></div>
+			<div class="cercle hotPink" id="hotPink" onclick="choix('hotPink')"></div>
+			<div class="cercle purple" id="purple" onclick="choix('purple')"></div>
+		</div>
+
+
+	</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- <div class="verificateur">
+						<div class="cercleM"></div>
+						<div class="cercleM"></div>
+						<div class="cercleM"></div>
+						<div class="cercleM"></div>
+				
+					</div> -->
