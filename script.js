@@ -3,10 +3,13 @@ var nombreProp = 0
 var double = 0
 var couleurPossible = ["red", "yellow", "blue", "green", "hotPink", "purple"]
 var solution = ["", "", "", ""]
-var reponse = ["","","",""]
+var reponse = []
 var verificationJB = 0
 var verificationJM = 0
 var win = 0
+var cercleRetour= ""
+var cercle = ""
+
 // 0=faux 1=juste mais pas a la bonne place 2=juste et a la bonne place
 
 function newPartie () {
@@ -34,6 +37,7 @@ function randomColor (min,max) {
 
 
 function choix(color){
+	console.log(color)
 	double = 0
 	for (var k = 0 ; k < 4 ; k++){
 		if(color == reponse[k]){
@@ -41,9 +45,10 @@ function choix(color){
 		}
 	}
 	if (double == 0){
-	reponse[nombreCercle] = color
-	var cercle = "<div class='cercle " + color + "'></div>"
-	document.getElementById("proposition").innerHTML += cercle
+	reponse.push(color)
+	console.log(reponse)
+	cercleRetour = "<div id=" + color + "1 class='cercle " + color + "' onclick=retour('" + color + "')></div>"
+	document.getElementById("proposition").innerHTML += cercleRetour
 	nombreCercle++
 	document.getElementById(color).style.opacity = 0
 
@@ -57,9 +62,12 @@ function choix(color){
 									}
 		nombreProp++
 		document.getElementById("nombreCoup").innerHTML = nombreProp
-		var copier = document.getElementById("proposition").innerHTML
-		document.getElementById("reponse" + nombreProp).innerHTML = copier
+		for(ab =0 ; ab<4;ab++){
+		cercle += "<div class='cercle " + reponse[ab]+ "'></div>"
+	}console.log(cercle)
+		document.getElementById("reponse" + nombreProp).innerHTML = cercle
 		document.getElementById("proposition").innerHTML = ""
+		cercle = ""
 		nombreCercle  = 0
 		document.getElementById("reponse").scrollTo(0, 800);
 		// fin element graphique
@@ -105,7 +113,7 @@ function choix(color){
 
 			
 
-		reponse = ["","","",""]
+		reponse = []
 		
 
 		
@@ -121,6 +129,28 @@ function choix(color){
 			}
 
 }
+console.log(reponse)
 }
+
+
+function retour(color){
+	console.log(reponse)
+	document.getElementById(color).style.opacity = 1
+	var element = document.getElementById(color + "1");
+	element.parentNode.removeChild(element);
+	nombreCercle--
+	for (b=0; b<4;b++){
+		if(reponse[b] == color){
+			reponse.splice(b, 1)
+
+			console.log(nombreCercle)
+
+		}
+	}
+
+}
+	
+
+
 
 newPartie()
