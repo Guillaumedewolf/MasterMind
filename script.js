@@ -12,16 +12,25 @@ var cercle = ""
 //dif
 var verificationTab = [1,1,1,1]
 var difficulte = 0
+var nombreCouleur = [0,0,0,0,0,0]
 
 // 0=faux 1=juste mais pas a la bonne place 2=juste et a la bonne place
 
 function newPartie() {
+	nombreCouleur = [0,0,0,0,0,0]
 	nombreCercle = 0
 	nombreProp = 0
 	win = 0
+	document.getElementById("proposition").innerHTML = ""
 	document.getElementById("nombreCoup").innerHTML = nombreProp
 	document.getElementById("historique").innerHTML = '<div id="reponse1"></div><div id="reponse2"></div><div id="reponse3"></div><div id="reponse4"></div><div id="reponse5"></div><div id="reponse6"></div><div id="reponse7"></div><div id="reponse8"></div><div id="reponse9"></div><div id="reponse10"></div>'
 	document.getElementById("verificateur").innerHTML = '<div id="verification1"></div><div id="verification2"></div><div id="verification3"></div><div id="verification4"></div><div id="verification5"></div><div id="verification6"></div><div id="verification7"></div><div id="verification8"></div><div id="verification9"></div><div id="verification10"></div>'
+	document.getElementById("red").style.opacity = 1
+	document.getElementById("yellow").style.opacity = 1
+	document.getElementById("blue").style.opacity = 1
+	document.getElementById("green").style.opacity = 1
+	document.getElementById("hotPink").style.opacity = 1
+	document.getElementById("purple").style.opacity = 1
 	if (difficulte == 1){
 		randomColorDif(0,5)
 	}
@@ -47,8 +56,8 @@ function randomColorDif(min,max) {
 	for (q = 0; q < 4; q++){
 		var random = Math.floor(min + (max+1-min)*Math.random())
 		solution[q] = couleurPossible[random]
-		
 	}
+	console.log(couleurPossible)
 }
 
 
@@ -148,9 +157,17 @@ function choixFacile(color){
 }
 
 
+function retour(color,n){
+	if(difficulte == 1){
+		 retourD(color, n)
+	}
+	else {
+		retourF(color)
 
+	}
+}
 
-function retour(color){
+function retourF(color){
 	console.log(reponse)
 	document.getElementById(color).style.opacity = 1
 	var element = document.getElementById(color + "1");
@@ -165,7 +182,24 @@ function retour(color){
 		}
 	}
 
-}
+ }
+
+
+function retourD(color, n){
+	console.log(n)
+
+
+
+	var element = document.getElementById(color+n);
+	element.parentNode.removeChild(element);
+	nombreCercle--
+			reponse.splice(n, 1)
+
+
+		}
+	
+
+
 
 
 
@@ -178,12 +212,23 @@ function retour(color){
 //---------------------------------------------------------------
 
 function choixDifficile(color){
-	console.log(color)
 	reponse.push(color)
-	console.log(reponse)
-	cercleRetour = "<div id=" + color + "1 class='cercle " + color + "' onclick=retour('" + color + "')></div>"
-	document.getElementById("proposition").innerHTML += cercleRetour
-	nombreCercle++
+
+	for (n= 0 ; n<6; n++){
+		if (color == couleurPossible[n]){
+			nombreCouleur[n]++
+			console.log(nombreCouleur[n])
+			console.log(couleurPossible)
+			cercleRetour = "<div id=" + color + nombreCouleur[n] + " class='cercle " + color + "' onclick=retour('" + color + "'," + nombreCouleur[n] + ")></div>"
+			document.getElementById("proposition").innerHTML += cercleRetour
+			nombreCercle++
+			console.log(cercleRetour)
+			break
+		}
+	}
+
+
+
 
 
 
@@ -282,23 +327,21 @@ function choixDifficile(color){
 
 
 function difficile(){
-	newPartie()
 	difficulte = 1
 	// document.getElementById("difficile").style.backgroundColor = "#C2815D"
 	// document.getElementById("facile").style.backgroundColor = ""
 	document.getElementById("infoJeux").innerHTML = "La solution est composé de 4 couleurs pouvant être les mêmes!"
 	// document.getElementById("careeColor").style.transform = "translate(0,124px)"
-
+	newPartie()
 }
 
 function facile(){
-	newPartie()
 	difficulte = 0
 	// document.getElementById("difficile").style.backgroundColor = ""
 	// document.getElementById("facile").style.backgroundColor = "#C2815D"
 	document.getElementById("infoJeux").innerHTML = "La solution est composé de 4 couleurs différentes!"
 	// document.getElementById("careeColor").style.transform = "translate(0,0px)"
-
+	newPartie()
 
 }
 

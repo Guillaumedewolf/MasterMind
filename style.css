@@ -150,3 +150,13 @@ svg {
 	border-radius: 10px;
 
 }
+
+#nouvellePartie {
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 10px
+}
+
+#nouvellePartie:hover{
+	background-color: #C2815D;
+}

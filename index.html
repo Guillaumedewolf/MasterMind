@@ -25,12 +25,12 @@
 				
 		</div>
 		<div id="choix">
-			<div class="cercle red" id="red" onclick="choix('red')"></div>
-			<div class="cercle yellow" id="yellow" onclick="choix('yellow')"></div>
-			<div class="cercle blue" id="blue" onclick="choix('blue')"></div>
-			<div class="cercle green" id="green" onclick="choix('green')"></div>
-			<div class="cercle hotPink" id="hotPink" onclick="choix('hotPink')"></div>
-			<div class="cercle purple" id="purple" onclick="choix('purple')"></div>
+			<div class="cercle red" id="red" onclick="choix('red')" style="opacity: 0;"></div>
+			<div class="cercle yellow" id="yellow" onclick="choix('yellow')" style="opacity: 0;"></div>
+			<div class="cercle blue" id="blue" onclick="choix('blue')" style="opacity: 0;"></div>
+			<div class="cercle green" id="green" onclick="choix('green')" style="opacity: 0;"></div>
+			<div class="cercle hotPink" id="hotPink" onclick="choix('hotPink') " style="opacity: 0;"></div>
+			<div class="cercle purple" id="purple" onclick="choix('purple')" style="opacity: 0;"></div>
 		</div>
 
 
@@ -39,6 +39,7 @@
 		<p id="facile" onclick="facile()" onmouseover="mouseOverF()" onmouseout="mouseOut()">facile</p>
 		<p id="difficile" onclick="difficile()" onmouseover="mouseOverD()" onmouseout="mouseOut()">difficile</p>
 		<div id="careeColor"></div>
+		<div id="nouvellePartie" onclick="newPartie()">Nouvelle Partie</div>
 	</div>
 <script src="script.js"></script>
 </body>
